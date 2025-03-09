@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - OTIFY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .sidebar-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .submenu.active {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-cyan-600 text-white p-4 flex flex-col">
+            <div class="text-2xl font-bold mb-8 border-b pb-4">
+                <i class="bi bi-grid-fill mr-2"></i>
+                Dashboard
+            </div>
+            
+            <!-- Admin Menu -->
+            <div class="space-y-2">
+                <div class="sidebar-item p-3 rounded cursor-pointer">
+                    <i class="bi bi-person-fill mr-2"></i>
+                    ADMIN
+                </div>
+                
+                <!-- Services Menu -->
+                <div>
+                    <div class="sidebar-item p-3 rounded cursor-pointer flex justify-between items-center" id="servicesToggle">
+                        <div>
+                            <i class="bi bi-gear-fill mr-2"></i>
+                            SERVICES
+                        </div>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                    
+                    <div class="submenu pl-8 bg-cyan-700" id="servicesSubmenu">
+                        <div class="sidebar-item p-3 rounded cursor-pointer">
+                            <i class="bi bi-plus-circle mr-2"></i>
+                            ADD SERVICES
+                        </div>
+                        <div class="sidebar-item p-3 rounded cursor-pointer">
+                            <i class="bi bi-list-ul mr-2"></i>
+                            VIEW SERVICES
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h1 class="text-4xl font-bold text-cyan-600 text-center">
+                    WELCOME TO OTIFY
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle submenu
+        const servicesToggle = document.getElementById('servicesToggle');
+        const servicesSubmenu = document.getElementById('servicesSubmenu');
+        
+        servicesToggle.addEventListener('click', () => {
+            servicesSubmenu.classList.toggle('active');
+            const chevron = servicesToggle.querySelector('.bi-chevron-down');
+            chevron.style.transform = servicesSubmenu.classList.contains('active') 
+                ? 'rotate(180deg)' 
+                : 'rotate(0deg)';
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
